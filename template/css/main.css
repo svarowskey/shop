@@ -263,7 +263,7 @@ a#scrollUp i{
   outline: medium none;
   padding-left: 10px;
   width: 155px;
-  background-image: url(../images/home/searchicon.png);
+  background-image: url(/template/images/home/searchicon.png);
   background-repeat: no-repeat;
   background-position: 130px;
 }
@@ -837,7 +837,6 @@ h2.title:before{
 	overflow:hidden;
 }
 
-
 h2.title {
   color: #FE980F;
   font-family: 'Roboto', sans-serif;
@@ -857,12 +856,20 @@ h2.title {
 
 .single-products {
   position: relative;
+  height: 480px;
 }
 
 .new, .sale {
   position: absolute;
   top: 0;
   right: 0;
+}
+
+.product-site img{
+    max-height: 320px;
+    max-width: 250px;
+    min-height: 320px;
+    min-width: 250px;
 }
 
 .productinfo h2{
