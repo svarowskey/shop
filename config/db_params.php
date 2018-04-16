@@ -3,7 +3,7 @@
     return array(
         //Объявляем переменные и назначаем данные для подключения к БД
         'host'      => 'localhost',
-        'dbname'    => 'db_shop',
+        'dbname'    => 'super_mag',
         'user'      => 'root',
         'password'  => '',
     );
