@@ -1,8 +1,12 @@
 <?php
     return array(
 
-        'product/([0-9]+)' => 'product/view/$1', //actionView в ProductController
+        'product/([0-9]+)'      => 'product/view/$1', //actionView в ProductController
 
-        '' => 'site/index', //action index в SiteController
+        'catalog'               => 'catalog/index', //actionIndex в CatalogController
+
+        'category/([0-9)+])'    => 'catalog/category/$1',
+
+        ''                      => 'site/index', //actionIndex в SiteController
 
     );

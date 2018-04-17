@@ -10,7 +10,7 @@
             $categories = Category::getCategoryList();
 
             $latestsProduct = array();
-            $latestsProduct = Product::getLatestProducts(16);
+            $latestsProduct = Product::getLatestProducts(6);
 
             require_once ROOT.'/views/site/index.php';
 

@@ -1,4 +1,4 @@
-    <?php include ROOT.'/views/layouts/header.php'; ?>
+<?php include ROOT.'/views/layouts/header.php'; ?>
 
 <section>
     <div class="container">
@@ -27,26 +27,26 @@
                 <div class="features_items"><!--features_items-->
                     <h2 class="title text-center">Последние товары</h2>
 
-                        <?php foreach ($latestsProduct as $latestsProductItem): ?>
-                            <div class="col-sm-4">
-                                <div class="product-image-wrapper">
-                                    <div class="single-products">
-                                        <div class="productinfo text-center product-item-main-page">
-                                            <img src="/template/images/shop/<?php echo $latestsProductItem['image']; ?>" alt="" />
-                                                    <h2><?php echo $latestsProductItem['price']; ?></h2>
-                                                    <p>
-                                                        <a href="/product/<?php echo $latestsProductItem['id']?>"><?php echo $latestsProductItem['name']; ?>
-                                                        </a>
-                                                    </p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
-                                        </div>
-                                        <?php if ($latestsProductItem['is_new']):?>
-                                            <img src="/template/images/home/new.png" class="new" alt="" />
-                                        <?php endif; ?>
+                    <?php foreach ($latestsProduct as $latestsProductItem): ?>
+                        <div class="col-sm-4">
+                            <div class="product-image-wrapper">
+                                <div class="single-products">
+                                    <div class="productinfo text-center product-item-main-page">
+                                        <img src="/template/images/shop/<?php echo $latestsProductItem['image']; ?>" alt="" />
+                                        <h2><?php echo $latestsProductItem['price']; ?></h2>
+                                        <p>
+                                            <a href="/product/<?php echo $latestsProductItem['id']?>"><?php echo $latestsProductItem['name']; ?>
+                                            </a>
+                                        </p>
+                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
                                     </div>
+                                    <?php if ($latestsProductItem['is_new']):?>
+                                        <img src="/template/images/home/new.png" class="new" alt="" />
+                                    <?php endif; ?>
                                 </div>
                             </div>
-                        <?php endforeach; ?>
+                        </div>
+                    <?php endforeach; ?>
 
                 </div><!--features_items-->
 
@@ -148,4 +148,4 @@
     </div>
 </section>
 
-    <?php include ROOT.'/views/layouts/footer.php';?>
+<?php include ROOT.'/views/layouts/footer.php';?>
