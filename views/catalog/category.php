@@ -25,7 +25,7 @@
 
             <div class="col-sm-9 padding-right">
 
-<                   div class="features_items"><!--features_items-->
+                  <div class="features_items"><!--features_items-->
                     <h2 class="title text-center">Последние товары</h2>
 
                     <?php foreach ($categoryProducts as $ProductItem): ?>
@@ -49,7 +49,11 @@
                         </div>
                     <?php endforeach; ?>
 
+
+
                 </div><!--features_items-->
+                <!-- Постраничная навигация  -->
+                <?php echo $pagination->get(); ?>
             </div>
         </div>
     </div>
