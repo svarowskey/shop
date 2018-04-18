@@ -56,4 +56,80 @@ class User
 
         return false;
     }
+
+    //Проверка существование пользователя в базе
+    public static function checkUserData($email, $password){
+        $db  = Db::getConnection();
+        $sql = 'SELECT * FROM user WHERE email = :email AND password = :password';
+
+        $result = $db->prepare($sql);
+        $result->bindParam(':email', $email, PDO::PARAM_STR);
+        $result->bindParam(':password', $password, PDO::PARAM_STR);
+        $result->execute();
+
+        $user = $result->fetch();
+        if($user){
+            return $user['id'];
+        }
+
+        return false;
+    }
+
+    //Запоминаем пользователя (сессия)
+    public static function auth($userId){
+        $_SESSION['user'] = $userId;
+    }
+
+    //Проверяем войден ли пользователь
+    public static function checkLogged(){
+        //Если сессия есть, вернем идентификатор пользователя
+        if (isset($_SESSION['user'])){
+            return $_SESSION['user'];
+        }
+
+        //Если сессии нет, перенаправляем пользователя на страницу входа
+        header("Location: /user/login");
+    }
+
+    //Проверяем гость на сайте или нет
+    public static function isGuest(){
+        if (isset($_SESSION['user'])){
+            return false;
+        }
+        return true;
+    }
+
+    public static function getUserById($id)
+    {
+        $idProduct = intval($id);
+        if($idProduct)
+        {
+            $db = Db::getConnection();
+            $sql = 'SELECT * FROM user WHERE id = :id';
+            $result = $db->prepare($sql);
+            $result->bindParam('id', $id, PDO::PARAM_INT);
+
+            //Указываем, что хотим получить данные в виде массива
+            $result->setFetchMode(PDO::FETCH_ASSOC);
+            $result->execute();
+
+            return $result->fetch();
+        }
+
+    }
+
+    public static function edit($id, $name, $password)
+    {
+        $db = Db::getConnection();
+
+        $sql = 'UPDATE user 
+                SET name = :name, password = :password
+                WHERE id = :id';
+        $result = $db->prepare($sql);
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+        $result->bindParam(':name', $name, PDO::PARAM_STR);
+        $result->bindParam(':password', $password, PDO::PARAM_STR);
+
+        return $result->execute();
+    }
 }
