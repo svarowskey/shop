@@ -19,6 +19,8 @@
 
         'cabinet'                           => 'cabinet/index',             //actionIndex в CabinetController
 
+        'contacts'                           => 'site/contact',              //actionContact в SiteController
+
         ''                                  => 'site/index',                //actionIndex в SiteController
 
-    );
+);
