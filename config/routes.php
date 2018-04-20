@@ -19,7 +19,11 @@
 
         'cabinet'                           => 'cabinet/index',             //actionIndex в CabinetController
 
-        'contacts'                           => 'site/contact',              //actionContact в SiteController
+        'cart/add'                          => 'cart/add',                  //actionAdd в CartController
+
+        'cart/addAjax'                      => 'cart/addAjax',              //actionAddAjax в CartController
+
+        'contacts'                          => 'site/contact',              //actionContact в SiteController
 
         ''                                  => 'site/index',                //actionIndex в SiteController
 

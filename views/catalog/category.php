@@ -36,10 +36,10 @@
                                         <img src="/template/images/shop/<?php echo $ProductItem['image']; ?>" alt="" />
                                         <h2><?php echo $ProductItem['price']; ?></h2>
                                         <p>
-                                            <a href="/product/<?php echo $ProductItem['id']?>"><?php echo $ProductItem['name']; ?>
+                                            <a href="/product/<?php echo $ProductItem['id'];?>"><?php echo $ProductItem['name']; ?>
                                             </a>
                                         </p>
-                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
+                                        <a href="#" data-id="<?php echo $ProductItem['id'];?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
                                     </div>
                                     <?php if ($ProductItem['is_new']):?>
                                         <img src="/template/images/home/new.png" class="new" alt="" />
