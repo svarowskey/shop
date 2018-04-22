@@ -41,10 +41,7 @@
                                             <span><?php echo $product['price'];?></span>
                                             <label>Количество:</label>
                                             <input type="text" value="3" />
-                                            <button type="button" class="btn btn-fefault cart">
-                                                <i class="fa fa-shopping-cart"></i>
-                                                В корзину
-                                            </button>
+                                            <a href="#" data-id="<?php echo $product['id']; ?>" class="btn btn-default add-to-cart cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
                                     </span>
                                 <p><b>Наличие:</b>
                                     <?php echo ($product['availability'] == 1) ?  'На складе' : 'Нет в наличии';?>

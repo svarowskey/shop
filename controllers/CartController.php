@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: kremennoy
- * Date: 20.04.2018
- * Time: 15:41
- */
 
     class CartController
     {
@@ -19,7 +13,7 @@
 
         public function actionAddAjax($id){
             //Добавляем товар в корзину с помощью Ajax
-            echo Cart::addProduct($id);
+            echo '('.Cart::addProduct($id).')';
             return true;
         }
 
