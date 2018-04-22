@@ -23,4 +23,27 @@
             return true;
         }
 
+        public function actionIndex(){
+            $categories = array();
+            $categories = Category::getCategoryList();
+
+            $productsInCart = false;
+
+            //Получаем массив товаров
+            $productsInCart = Cart::get_products();
+
+            if ($productsInCart){
+                //Получаем полную инфомрацию о товарах для списка
+                $productsIds = array_keys($productsInCart);
+                $products    = Product::getProductsByIds($productsIds);
+
+                //Получаем общую стоимость товаров
+                $totalPrice = Cart::getTotalPrice($products);
+            }
+
+            require_once ROOT.'/views/cart/index.php';
+
+            return true;
+        }
+
     }

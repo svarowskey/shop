@@ -26,6 +26,26 @@
             return self::countItems();
         }
 
+        public static function get_products(){
+            if(isset($_SESSION['products'])){
+                return $_SESSION['products'];
+            }
+            return false;
+        }
+
+        public static function getTotalPrice($products){
+            $productsInCart = self::get_products();
+
+            $total = 0;
+
+            if ($productsInCart){
+                foreach ($products as $item){
+                    $total += $item['price'] * $productsInCart[$item['id']];
+                }
+            }
+            return $total;
+        }
+
         //Подсчет поличества товаров в корзине (в сессии)
         public static function countItems(){
             if (isset($_SESSION['products'])){

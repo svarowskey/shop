@@ -11,20 +11,22 @@
 
         'user/register'                     => 'user/register',
 
-        'user/login'                        => 'user/login',                //actionLogin в UserController
+        'user/login'                        => 'user/login',                //actionLogin   в UserController
 
-        'user/logout'                       => 'user/logout',               //actionLogout в UserController
+        'user/logout'                       => 'user/logout',               //actionLogout  в UserController
 
-        'cabinet/edit'                      => 'cabinet/edit',              //actionEdit в CabinetController
+        'cabinet/edit'                      => 'cabinet/edit',              //actionEdit    в CabinetController
 
-        'cabinet'                           => 'cabinet/index',             //actionIndex в CabinetController
+        'cabinet'                           => 'cabinet/index',             //actionIndex   в CabinetController
 
-        'cart/add'                          => 'cart/add',                  //actionAdd в CartController
+        'cart/add'                          => 'cart/add',                  //actionAdd     в CartController
 
         'cart/addAjax'                      => 'cart/addAjax',              //actionAddAjax в CartController
 
+        'cart'                              => 'cart/index',                //actionIndex   в CartController
+
         'contacts'                          => 'site/contact',              //actionContact в SiteController
 
-        ''                                  => 'site/index',                //actionIndex в SiteController
+        ''                                  => 'site/index',                //actionIndex   в SiteController
 
 );
