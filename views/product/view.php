@@ -32,21 +32,20 @@
                         </div>
                         <div class="col-sm-7">
                             <div class="product-information"><!--/product-information-->
+
                                 <?php if ($product['is_new']):?>
                                 <img src="/template/images/product-details/new.jpg" class="newarrival" alt="" />
                                 <?php endif; ?>
+
                                 <h2><?php echo $product['name'];?></h2>
                                 <p>Код товара: <?php echo $product['code'];?></p>
                                     <span>
                                             <span><?php echo $product['price'];?></span>
-                                            <label>Количество:</label>
-                                            <input type="text" value="3" />
                                             <a href="#" data-id="<?php echo $product['id']; ?>" class="btn btn-default add-to-cart cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
                                     </span>
                                 <p><b>Наличие:</b>
-                                    <?php echo ($product['availability'] == 1) ?  'На складе' : 'Нет в наличии';?>
+                                    <?php echo Product::getAvailability($product['availability']);?>
                                 </p>
-                                <p><b>Состояние:</b> Новое</p>
                                 <p><b>Производитель:</b> <?php echo $product['brand'];?></p>
                             </div><!--/product-information-->
                         </div>
@@ -67,5 +66,4 @@
 
 <br/>
 <br/>
-
-    <?php include ROOT.'/views/layouts/footer.php';?>
+<?php include ROOT.'/views/layouts/footer.php';?>

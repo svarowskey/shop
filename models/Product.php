@@ -109,4 +109,23 @@ class Product
         }
         return $products;
     }
+
+    /**
+     * Проверка наличия товара
+     * 0 - Под заказ, 1 - В наличии
+     * @param integer $availability - Статус
+     * @return string - Текстовое пояснение
+     */
+    public static function getAvailability($availability){
+        switch ($availability){
+            case '1':
+                return 'В наличии';
+                break;
+            case '0':
+                return 'Под заказ';
+                break;
+        }
+    }
+
+
 }
