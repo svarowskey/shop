@@ -40,7 +40,7 @@
                                     <span>
                                             <span><?php echo $product['price'];?></span>
                                             <label>Количество:</label>
-                                            <input type="text" value="3" />
+                                            <input type="text" id="count-product" value="3" />
                                             <a href="#" data-id="<?php echo $product['id']; ?>" class="btn btn-default add-to-cart cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
                                     </span>
                                 <p><b>Наличие:</b>

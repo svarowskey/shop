@@ -21,6 +21,7 @@
     $(document).ready(function(){
         $(".add-to-cart").click(function () {
             var id = $(this).attr("data-id");
+            // var countProd = parseInt($(this).getElementById('count-product'));
             $.post("/cart/addAjax/"+id, {}, function (data) {
                 $("#cart-count").html(data);
             });

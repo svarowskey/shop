@@ -23,6 +23,8 @@
 
         'cart/addAjax'                      => 'cart/addAjax',              //actionAddAjax в CartController
 
+        'cart/checkout'                     => 'cart/checkout',             //actionCheckout в CartController
+
         'cart'                              => 'cart/index',                //actionIndex   в CartController
 
         'contacts'                          => 'site/contact',              //actionContact в SiteController
