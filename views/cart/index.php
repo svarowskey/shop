@@ -47,13 +47,17 @@
                                     <td><?php echo $productsInCart[$product['id']]; ?></td>
                                 </tr>
                             <?php endforeach ?>
-                                <tr>
-                                    <td colspan="3">Общая стоимость:</td>
-                                    <td><?php echo $totalPrice; ?></td>
-                                </tr>
+                            <tr>
+                                <td colspan="3">Общая стоимость:</td>
+                                <td><?php echo $totalPrice; ?></td>
+                            </tr>
                         </table>
+
+                        <a class="btn btn-default checkout" href="/cart/checkout"><i class="fa fa-shopping-cart"></i> Оформить заказ</a>
                     <?php else: ?>
                         <p>Ваша корзина пуста</p>
+
+                        <a class="btn btn-default checkout" href="/"><i class="fa fa-shopping-cart"></i> Вернуться к покупкам</a>
                     <?php endif; ?>
                 </div><!--features_items-->
             </div>

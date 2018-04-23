@@ -2,7 +2,7 @@
 
     class Cart
     {
-        public static function addProduct($id){
+        public static function addProduct($id, $count = 1){
             $id = intval($id);
 
             //Пустой массив для товаров в корзине
@@ -16,7 +16,7 @@
 
             //Если товар есть в корзине, но был добавлен еще раз - увеличим количество
             if (array_key_exists($id, $productsInCart)){
-                $productsInCart[$id]++;
+                $productsInCart[$id]= $productsInCart[$id] + $count;
             } else {
                 //Добавляем нового товара в корзину
                 $productsInCart[$id] = 1;
@@ -59,5 +59,9 @@
             }
         }
 
-
+        public static function clear(){
+            if (isset($_SESSION['products'])){
+                unset($_SESSION['products']);
+            }
+        }
     }
