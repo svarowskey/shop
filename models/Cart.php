@@ -64,4 +64,15 @@
                 unset($_SESSION['products']);
             }
         }
+
+        public static function deleteProduct($id){
+            //Получаем массив товаров в корзине
+            $productsInCart = self::get_Products();
+
+            //Удаляем из массива элемент с указанным id
+            unset($productsInCart[$id]);
+
+            //Записываем массив товаров с удаленным элементом в сессию
+            $_SESSION['products'] = $productsInCart;
+        }
     }

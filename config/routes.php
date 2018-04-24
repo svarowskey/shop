@@ -5,9 +5,9 @@
 
         'catalog'                           => 'catalog/index',             //actionIndex в CatalogController
 
-        'category/([0-9)+])/page-([0-9]+)'  => 'catalog/category/$1/$2',
+        'category/([0-9]+)/page-([0-9]+)'  => 'catalog/category/$1/$2',
 
-        'category/([0-9)+])'                => 'catalog/category/$1',
+        'category/([0-9]+)'                => 'catalog/category/$1',
 
         'user/register'                     => 'user/register',
 
@@ -18,6 +18,8 @@
         'cabinet/edit'                      => 'cabinet/edit',              //actionEdit    в CabinetController
 
         'cabinet'                           => 'cabinet/index',             //actionIndex   в CabinetController
+
+        'cart/delete/([0-9]+)'              => 'cart/delete/$1',            //actionDelete в CartController
 
         'cart/add'                          => 'cart/add',                  //actionAdd     в CartController
 

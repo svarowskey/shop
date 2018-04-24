@@ -144,6 +144,7 @@ class Product
             $products[$i]['name']   = $row['name'];
             $products[$i]['code']   = $row['code'];
             $products[$i]['price']  = $row['price'];
+            $products[$i]['image']  = $row['image'];
             $i++;
         }
         return $products;
