@@ -1054,6 +1054,12 @@ h2.title {
   margin-right:0;
 }
 
+.recommended-item img{
+  max-width: 128px;
+  max-height: 180px;
+  min-height: 180px;
+}
+
 .recommended_items {
   overflow: hidden;
 }

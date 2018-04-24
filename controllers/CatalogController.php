@@ -9,6 +9,12 @@
             $latestsProduct = array();
             $latestsProduct = Product::getLatestProducts(16);
 
+            $recommendedProducts = array();
+            $recommendedProducts = Product::getRecommendedProducts();
+
+            $recommendedProductsNext = array();
+            $recommendedProductsNext = Product::getRecommendedProducts(Product::getRecommendedProductsCount(), 4);
+
             require_once ROOT.'/views/catalog/index.php';
 
             return true;
