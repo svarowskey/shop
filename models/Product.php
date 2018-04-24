@@ -32,31 +32,18 @@ class Product
         return $productsList;
     }
 
-    public static function getRecommendedProductsCount(){
-        $db = Db::getConnection();
-
-        $resultQuery = $db->query('SELECT COUNT(*) FROM product WHERE status="1" AND is_recommended="1"');
-
-        $result = $resultQuery->fetch();
-
-        return $result[0];;
-    }
-
-    public static function getRecommendedProducts($countRecommendedProducts = 3, $startItem = 1)
+    /**
+     * Возвращает список рекомендуемых товаров
+     * @return array <p>Массив с товарами</p>
+     */
+    public static function getRecommendedProducts()
     {
         $db = Db::getConnection();
-
-        $offset = $startItem - 1;
-
-        $count = intval($countRecommendedProducts);
 
         $productsRecommendedList = array();
 
         $result = $db->query('SELECT id, name, price, image, is_new FROM product '
-            .'WHERE status = "1" AND is_recommended = "1"'
-            ."ORDER BY id DESC "
-            ."LIMIT ". $countRecommendedProducts
-            ." OFFSET ".$offset);
+            .'WHERE status = "1" AND is_recommended = "1" ORDER BY id DESC');
 
         $i = 0;
         while ($row = $result->fetch()){

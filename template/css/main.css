@@ -580,7 +580,8 @@ ul.sub-menu {
 }
 
 .item {
-  padding-left: 100px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 
@@ -1055,7 +1056,7 @@ h2.title {
 }
 
 .recommended-item img{
-  max-width: 128px;
+  max-width: 150px;
   max-height: 180px;
   min-height: 180px;
 }

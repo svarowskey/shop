@@ -2,20 +2,17 @@
 class SiteController
 {
     public function actionIndex(){
-        $categories = array();
+        //Список категорий для левого меню
         $categories = Category::getCategoryList();
 
-        $latestsProduct = array();
+        //Список последних товаров
         $latestsProduct = Product::getLatestProducts(6);
 
-        $recommendedProducts = array();
-        $recommendedProducts = Product::getRecommendedProducts();
+        //Список товаров для слайдера
+        $sliderProducts = Product::getRecommendedProducts();
 
-        $recommendedProductsNext = array();
-        $recommendedProductsNext = Product::getRecommendedProducts(Product::getRecommendedProductsCount(), 4);
-
+        //Подключаем вид
         require_once ROOT.'/views/site/index.php';
-
         return true;
     }
 
@@ -27,7 +24,6 @@ class SiteController
         $result    = false;
 
         if (isset($_POST['submit'])){
-
             $userEmail  = $_POST['userEmail'];
             $userText   = $_POST['userText'];
 
@@ -45,11 +41,8 @@ class SiteController
                 $message    = "Текст : {$userText}. От {$userEmail}";   //Текст письма
                 $result     = mail($adminEmail, $subject, $message);    //Отправка письма
             }
-
         }
         require_once ROOT . '/views/site/contact.php';
-
         return true;
-
     }
 }
