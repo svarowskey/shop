@@ -23,6 +23,10 @@
                                 <input type="submit" name="submit" class="btn btn-default" value="Войти"/>
                             </form>
                         </div><!--/sign up form-->
+                        <br/>
+                        <p class="user-help-text"><a>Забыли пароль?<a/></p>
+
+                        <p class="user-help-text"><a href="/user/register">Регистрация</a></p>
 
                     <br/>
                     <br/>
