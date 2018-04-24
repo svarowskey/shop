@@ -63,10 +63,13 @@
 
                         <a class="btn btn-default checkout" href="/"><i class="fa fa-shopping-cart"></i> Вернуться к покупкам</a>
                     <?php endif; ?>
+
                 </div><!--features_items-->
             </div>
         </div>
     </div>
+    <br/>
+    <br/>
 </section>
 
 <?php include ROOT.'/views/layouts/footer.php';?>

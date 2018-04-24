@@ -33,7 +33,7 @@
                     <div class="contactinfo">
                         <ul class="nav nav-pills">
                             <li><a href="#"><i class="fa fa-phone"></i> +38 093 000 11 22</a></li>
-                            <li><a href="#"><i class="fa fa-envelope"></i> zinchenko.us@gmail.com</a></li>
+                            <li><a href="#"><i class="fa fa-envelope"></i> vladimir.svarowski@gmail.com</a></li>
                         </ul>
                     </div>
                 </div>
