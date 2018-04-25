@@ -2,10 +2,9 @@
 
 class Product
 {
-    const SHOW_BY_DEFAULT = 2;
+    const SHOW_BY_DEFAULT = 6;
 
     //returns an array of product
-
     public static function getLatestProducts($count = self::SHOW_BY_DEFAULT)
     {
         $count = intval($count);
@@ -56,6 +55,47 @@ class Product
         }
 
         return $productsRecommendedList;
+    }
+
+    /**
+     * Возвращает количество всех товаров из БД
+     * @return integer <p>Число товаров</p>
+     */
+    public static function getCountAllProducts(){
+        //Подключаемся к базе
+        $db = Db::getConnection();
+
+        //Пишем запрос
+        $resultQuery = $db->query('SELECT COUNT(*) FROM product WHERE status="1"');
+        $result = $resultQuery->fetch();
+
+        return intval($result[0]);
+    }
+
+    public static function getProductsForCatalog($page = 1){
+        //Конвертируем полученные данные в целое число
+        $page = intval($page);
+        $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
+
+        //Подключаем БД
+        $db = Db::getConnection();
+        $products = array();
+
+        //Пишем запрос
+        $result = $db->query('SELECT * FROM product WHERE status = "1" '
+                            .' ORDER BY id ASC LIMIT '.self::SHOW_BY_DEFAULT.' OFFSET '.$offset);
+
+        $i = 0;
+        while ($row = $result->fetch()){
+            $products[$i]['id']         = $row['id'];
+            $products[$i]['name']       = $row['name'];
+            $products[$i]['price']      = $row['price'];
+            $products[$i]['image']      = $row['image'];
+            $products[$i]['is_new']     = $row['is_new'];
+            $i++;
+        }
+
+        return $products;
     }
 
     public static function getProductListByCategory($categoryId = false, $page = 1)
@@ -154,5 +194,26 @@ class Product
         }
     }
 
+    /**
+     * Возвращает список товаров
+     * @return array <p>Массив товаров</p>
+    */
+    public static function getProductsList(){
+        //Подключаем БД
+        $db = Db::getConnection();
 
+        //Получение и возвращение результатов
+        $result = $db->query('SELECT id, name, price, code FROM product ORDER BY id ASC');
+        $productsList = array();
+        $i = 0;
+        while ($row = $result->fetch()){
+            $productsList[$i]['id']     = $row['id'];
+            $productsList[$i]['name']   = $row['name'];
+            $productsList[$i]['price']  = $row['price'];
+            $productsList[$i]['code']   = $row['code'];
+            $i++;
+        }
+
+        return $productsList;
+    }
 }

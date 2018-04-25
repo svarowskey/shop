@@ -1,19 +1,22 @@
 <?php
     class CatalogController
     {
-        public function actionIndex()
+        public function actionIndex($page = 1)
         {
-            $categories = array();
+            //Получаем общее количество товаров
+            $total = Product::getCountAllProducts();
+
+            //Список категорий для левого меню
             $categories = Category::getCategoryList();
 
-            $latestsProduct = array();
-            $latestsProduct = Product::getLatestProducts(16);
+            //Список последних товаров
+            $latestsProduct = Product::getProductsForCatalog($page);
 
-            $recommendedProducts = array();
-            $recommendedProducts = Product::getRecommendedProducts();
+            //Список товаров для слайдера
+            $sliderProducts = Product::getRecommendedProducts();
 
-            $recommendedProductsNext = array();
-            $recommendedProductsNext = Product::getRecommendedProducts(Product::getRecommendedProductsCount(), 4);
+            //Создаем объект Pagination - постраничная навигация
+            $pagination = new Pagination($total, $page, Product::SHOW_BY_DEFAULT, 'page-');
 
             require_once ROOT.'/views/catalog/index.php';
 
