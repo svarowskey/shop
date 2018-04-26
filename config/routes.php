@@ -42,6 +42,8 @@
 
         //Админпанель Управление товарами
 
+        'admin/product/update/([0-9]+)'     => 'adminProduct/update/$1',    //actionUpdate в AdminProductController
+
         'admin/product/delete/([0-9]+)'     => 'adminProduct/delete/$1',    //actionDelete в AdminProductController
 
         'admin/product/create'              => 'adminProduct/create',       //actionDelete в AdminProductController
