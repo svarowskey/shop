@@ -41,7 +41,14 @@
 
 
         //Админпанель Управление товарами
+
+        'admin/product/delete/([0-9]+)'     => 'adminProduct/delete/$1',    //actionDelete в AdminProductController
+
+        'admin/product/create'              => 'adminProduct/create',       //actionDelete в AdminProductController
+
         'admin/product'                     => 'adminProduct/index',        //actionIndex в AdminProductController
+
+
 
         //Админпанель
         'admin'                             => 'admin/index',               //actionIndex а AdminController

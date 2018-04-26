@@ -12,6 +12,22 @@ body {
   font-weight: 400;
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.page-wrapper {
+  min-height: 100%;
+  margin-bottom: -50px;
+}
+* html .page-wrapper {
+  height: 100%;
+}
+.page-buffer {
+  height: 50px;
+}
+
 ul li {
   list-style: none;
 }
@@ -545,7 +561,7 @@ ul.sub-menu {
 
 .footer-bottom {
   background: #D6D6D0;
-  padding-top: 10px;
+  padding-top: 15px;
 }
 
 .footer-bottom p {
@@ -2565,4 +2581,12 @@ h2.title {
     margin-left: 20px;
     margin-right: 20px;
     max-width: 30px;
+}
+
+.breadcrumbs .breadcrumb li a:after {
+  content: normal;
+}
+
+.page-buffer {
+  height: 50px;
 }
