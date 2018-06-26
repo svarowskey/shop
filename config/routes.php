@@ -46,9 +46,25 @@
 
         'admin/product/delete/([0-9]+)'     => 'adminProduct/delete/$1',    //actionDelete в AdminProductController
 
-        'admin/product/create'              => 'adminProduct/create',       //actionDelete в AdminProductController
+        'admin/product/create'              => 'adminProduct/create',       //actionCreate в AdminProductController
 
         'admin/product'                     => 'adminProduct/index',        //actionIndex в AdminProductController
+
+        'admin/category/update/([0-9]+)'    => 'adminCategory/update/$1',   //actionUpdate в AdminCategoryController
+
+        'admin/category/delete/([0-9]+)'    => 'adminCategory/delete/$1',   //actionDelete в AdminCategoryController
+
+        'admin/category/create'             => 'adminCategory/create',      //actionCreate в AdminCategoryController
+
+        'admin/category'                    => 'adminCategory/index',       //actionIndex в AdminCategoryController
+
+        'admin/order/update/([0-9]+)'       => 'adminOrder/update/$1',      //actionUpdate в AdminOrderController
+
+        'admin/order/delete/([0-9]+)'       => 'adminOrder/delete/$1',      //actionDelete в AdminOrderController
+
+        'admin/order/view'                  => 'adminOrder/view',           //actionView в AdminOrderController
+
+        'admin/order'                       => 'adminOrder/index',          //actionIndex в AdminOrderController
 
 
 

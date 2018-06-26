@@ -21,4 +21,33 @@ class Order
 
          return $result->execute();
     }
+
+    /**
+     * Возвращает массив со списком заказов
+     * @return array
+     */
+
+    public static function getOrderList(){
+
+        $db = Db::getConnection();
+
+        $result = $db->query("SELECT * FROM product_order ORDER BY ID ASC ");
+
+        $orderList = array();
+
+        $i = 0;
+
+        while ($row = $result->fetch()){
+            $orderList[$i]['id']            = $row['id'];
+            $orderList[$i]['user_name']     = $row['user_name'];
+            $orderList[$i]['user_phone']    = $row['user_phone'];
+            $orderList[$i]['date']          = $row['date'];
+            $orderList[$i]['status']        = $row['status'];
+            $i++;
+        }
+
+        return $orderList;
+
+    }
+
 }

@@ -1,158 +1,127 @@
 <?php
 
-    class AdminProductController extends AdminBase
+class AdminCategoryController extends AdminBase
+{
+
+    /**
+     * Action для "Управления товарами"
+     */
+    public function actionIndex()
     {
+        //Проверка доступа
+        self::checkAdmin();
 
-        /**
-         * Action для "Управления товарами"
-        */
-        public function actionIndex()
-        {
-            //Проверка доступа
-            self::checkAdmin();
+        //Получаем список категорий
+        $categoriesList = Category::getCategoriesListAdmin();
 
-            //Получаем список товаров
-            $productsList = Product::getProductsList();
+        //Подключаем вид
+        include_once ROOT.'/views/admin/category/index.php';
 
-            //Подключаем вид
-            include_once ROOT.'/views/admin/product/index.php';
+        return true;
+    }
 
-            return true;
-        }
+    /**
+     * Action для Создания категорий
+     */
+    public function actionCreate()
+    {
+        //Проверка доступа
+        self::checkAdmin();
 
-        /**
-         * Action для Создания товара
-        */
-        public function actionCreate()
-        {
-            //Проверка доступа
-            self::checkAdmin();
+        //Обработка формы
+        if (isset($_POST['submit'])){
+            //Если форма отправлена
+            //Получаем данные из формы
+            $name       = $_POST['name'];
+            $sort_order = $_POST['sort_order'];
+            $status     = $_POST['status'];
 
-            //Получаем список категорий для выпадающего списка
-            $categoriesList = Category::getCategoriesListAdmin();
 
-            //Обработка формы
-            if (isset($_POST['submit'])){
-                //Если форма отправлена
-                //Получаем данные из формы
-                $option['name']             = $_POST['name'];
-                $option['code']             = $_POST['article'];
-                $option['price']            = $_POST['price'];
-                $option['category_id']      = $_POST['category_id'];
-                $option['brand']            = $_POST['brand'];
-                $option['image']            = $_POST['image'];
-                $option['description']      = $_POST['description'];
-                $option['availability']     = $_POST['availability'];
-                $option['is_new']           = $_POST['is_new'];
-                $option['is_recommended']   = $_POST['is_recommended'];
-                $option['status']           = $_POST['availability'];
+            //Флаг ошибок в форме
+            $errors = false;
 
-                //Флаг ошибок в форме
-                $errors = false;
-
-                //При необходимости можно валидировать значения нужным образом
-                if (!isset($option['name']) || empty($option['name'])){
-                    $errors = 'Заполните поля!';
-                }
-
-                if ($errors == false){
-                    //Если ошибок нет
-                    //Добавляем новый товар
-                    $id = Product::createProduct($option);
-
-                    //Если запись добавлена
-                    if ($id){
-                        //Проверим, загружалось ли через форму изображение
-                        if (is_uploaded_file($_FILES['image']['tmp_name'])){
-                            //Если загружалось, переместим его в нужную папку и дадим новое имя
-                            move_uploaded_file($_FILES['image']['tmp_name'], $_SERVER['DOCUMENT_ROOT'].'/template/images/');
-                        }
-                    }
-
-                    //Перенаправляем администратора на страницу с товарами
-                    header('Location: /admin/product');
-                }
-
+            //При необходимости можно валидировать значения нужным образом
+            if (!isset($_POST['name']) || empty($_POST['name'])){
+                $errors = 'Заполните поля!';
             }
 
-            //Подключаем вид
-            include_once ROOT.'/views/admin/product/create.php';
-            return true;
-        }
-
-        /**
-         * Action для Редактирования товара
-        */
-        public function actionUpdate($id){
-            //Проверка доступа
-            self::checkAdmin();
-
-            //Получаем список категорий для выпадающего списка
-            $categoryList = Category::getCategoriesListAdmin();
-
-            //Получаем данные о конкретном товаре
-            $product = Product::getProductById($id);
-
-            if (isset($_POST['submit'])){
-                //Если форма отправлена
-                //Получаем данные из формы
-                $option['name']             = $_POST['name'];
-                $option['code']             = $_POST['article'];
-                $option['price']            = $_POST['price'];
-                $option['category_id']      = $_POST['category_id'];
-                $option['brand']            = $_POST['brand'];
-                $option['image']            = $_POST['image'];
-                $option['description']      = $_POST['description'];
-                $option['availability']     = $_POST['availability'];
-                $option['is_new']           = $_POST['is_new'];
-                $option['is_recommended']   = $_POST['is_recommended'];
-                $option['status']           = $_POST['availability'];
-
-                //Флаг ошибок в форме
-                $errors = false;
-
-                //При необходимости можно валидировать значения нужным образом
-                if (!isset($option['name']) || empty($option['name'])){
-                    $errors = 'Заполните поля!';
-                }
-
-                if ($errors == false){
-                    //Если ошибок нет
-                    //Сохраняем изменения
-                    if (Product::updateProduct($id, $option)){
-
-                    }
-                }
-
-                //Перенаправляем администратора на страницу Управления товарами
-                header('Location: /admin/product');
-            }
-
-            //Подключаем вид
-            require_once ROOT.'/views/admin/product/update.php';
-            return true;
-        }
-
-        /**
-         * Action для Удаления товара
-        */
-        public function actionDelete($id)
-        {
-            //Проверка доступа
-            self::checkAdmin();
-
-            //Обработка формы
-            if (isset($_POST['submit'])){
-                //Если форма отправлена
-                //Удаляем товар
-                Product::deleteProductById($id);
+            if ($errors == false){
+                //Если ошибок нет
+                //Добавляем новую категорию
+                Category::createCategory($name,$sort_order,$status);
 
                 //Перенаправляем администратора на страницу с товарами
-                header('Location: /admin/product');
+                header('Location: /admin/category');
             }
 
-            include_once ROOT.'/views/admin/product/delete.php';
-
-            return true;
         }
+
+        //Подключаем вид
+        include_once ROOT.'/views/admin/category/create.php';
+        return true;
     }
+
+    /**
+     * Action для Редактирования категории
+     */
+    public function actionUpdate($id){
+        //Проверка доступа
+        self::checkAdmin();
+
+        //Получаем список категорий для выпадающего списка
+        $category = Category::getCategoryByID($id);
+
+        //Обработка формы
+        if (isset($_POST['submit'])){
+            //Если форма отправлена
+            //Получаем данные из формы
+            $name       = $_POST['name'];
+            $sort_order = $_POST['sort_order'];
+            $status     = $_POST['status'];
+
+            //Флаг ошибок в форме
+            $errors = false;
+
+            //При необходимости можно валидировать значения нужным образом
+            if (!isset($_POST['name']) || empty($_POST['name'])){
+                $errors = 'Заполните поля!';
+            }
+
+            if ($errors == false){
+                //Если ошибок нет
+                //Сохраняем изменения
+                Category::updateCategory($id, $name, $sort_order, $status);
+            }
+
+            //Перенаправляем администратора на страницу Управления категориями
+            header('Location: /admin/category');
+        }
+
+        //Подключаем вид
+        require_once ROOT.'/views/admin/category/update.php';
+        return true;
+    }
+
+    /**
+     * Action для Удаления категории
+     */
+    public function actionDelete($id)
+    {
+        //Проверка доступа
+        self::checkAdmin();
+
+        //Обработка формы
+        if (isset($_POST['submit'])){
+            //Если форма отправлена
+            //Удаляем категорию
+            Category::deleteCategoryById($id);
+
+            //Перенаправляем администратора на страницу с товарами
+            header('Location: /admin/category');
+        }
+
+        include_once ROOT.'/views/admin/category/delete.php';
+
+        return true;
+    }
+}
