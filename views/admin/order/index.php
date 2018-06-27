@@ -35,7 +35,7 @@
                             <td><?php echo $orderString['user_name']; ?></td>
                             <td><?php echo $orderString['user_phone']; ?></td>
                             <td><?php echo $orderString['date']; ?></td>
-                            <td><?php echo $orderString['status']; ?></td>
+                            <td><?php echo Order::getStatusText($orderString['status']); ?></td>
                             <td><a href="/admin/order/view/<?php echo $orderString['id']; ?>" title="Просмотр"><i class="fa fa-eye"></i></a></td>
                             <td><a href="/admin/order/update/<?php echo $orderString['id']; ?>" title="Редактировать"><i class="fa fa-pencil-square"></i></a></td>
                             <td><a href="/admin/order/delete/<?php echo $orderString['id']; ?>" title="Удалить"><i class="fa fa-times"></i></a></td>
