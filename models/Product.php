@@ -358,4 +358,24 @@ class Product
         $result->bindParam('availability', $options['availability']);
         return $result->execute();
     }
+
+    public static function getImage($id)
+    {
+        //Название изображения-пустышки
+        $noImage = 'no-image.jpg';
+
+        //Путь к папке с товарами
+        $path = '/upload/images/products/';
+
+        //Путь к изображению товара
+        $pathToProductImage = $path . $id . '.jpg';
+
+        if (file_exists($_SERVER['DOCUMENT_ROOT'].$pathToProductImage)){
+            //Если файл с изображением для товара существует
+            //Возвращаем путь к файлу с изображением товара
+            return $pathToProductImage;
+        }
+
+        return $path . $noImage;
+    }
 }

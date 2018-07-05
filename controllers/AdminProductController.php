@@ -65,7 +65,7 @@
                         //Проверим, загружалось ли через форму изображение
                         if (is_uploaded_file($_FILES['image']['tmp_name'])){
                             //Если загружалось, переместим его в нужную папку и дадим новое имя
-                            move_uploaded_file($_FILES['image']['tmp_name'], $_SERVER['DOCUMENT_ROOT'].'/template/images/');
+                            move_uploaded_file($_FILES['image']['tmp_name'], $_SERVER['DOCUMENT_ROOT'].'/upload/images/products/');
                         }
                     }
 
@@ -88,7 +88,7 @@
             self::checkAdmin();
 
             //Получаем список категорий для выпадающего списка
-            $categoryList = Category::getCategoriesListAdmin();
+            $categoriesList = Category::getCategoriesListAdmin();
 
             //Получаем данные о конкретном товаре
             $product = Product::getProductById($id);
@@ -119,8 +119,15 @@
                 if ($errors == false){
                     //Если ошибок нет
                     //Сохраняем изменения
-                    if (Product::updateProduct($id, $option)){
+                    Product::updateProduct($id, $option);
 
+                    //Если запись добавлена
+                    if ($id){
+                        //Проверим, загружалось ли через форму изображение
+                        if (is_uploaded_file($_FILES['image']['tmp_name'])){
+                            //Если загружалось, переместим его в нужную папку и дадим новое имя
+                            move_uploaded_file($_FILES['image']['tmp_name'], $_SERVER['DOCUMENT_ROOT']."/upload/images/products/{$id}.jpg");
+                        }
                     }
                 }
 

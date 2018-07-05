@@ -10,11 +10,11 @@
                     <ol class="breadcrumb">
                         <li><a href="/admin">Панель администратора</a></li>
                         <li><a href="/admin/product">Управление товарами</a></li>
-                        <li class="active">Создание товара</li>
+                        <li class="active">Редактирование товара</li>
                     </ol>
                 </div>
 
-                <h4>Добавить новый товар</h4>
+                <h4>Редактирование товара #<?php echo $product['id']; ?></h4>
                 <br/>
 
 
@@ -57,12 +57,13 @@
                             <br/>
 
                             <p>Изображение товара</p>
-                            <input type="file" name="image">
+                            <img src="<?php echo Product::getImage($product['id']); ?>" width="200" alt="">
+                            <input type="file" name="image" placeholder="" value="<?php echo $product['image'];?>">
 
                             <br/>
 
                             <p>Детальное описание</p>
-                            <textarea name="description"><?php echo $product['description'];?>"</textarea>
+                            <textarea name="description"><?php echo $product['description'];?></textarea>
 
                             <br/><br/>
 
@@ -98,7 +99,7 @@
 
                             <br/><br/>
 
-                            <input type="submit" name="submit" class="btn btn-default" value="Добавить товар">
+                            <input type="submit" name="submit" class="btn btn-default" value="Сохранить изменения">
 
                             <br/><br/>
 
